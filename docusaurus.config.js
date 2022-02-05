@@ -40,6 +40,11 @@ const config = {
           },
         },
         blog: {
+          blogTitle: 'Blog title',
+          blogDescription: 'Blog desc',
+          blogSidebarCount: 5,
+          blogSidebarTitle: 'All our posts',
+          postsPerPage: 'ALL',
           showReadingTime: true,
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
@@ -56,6 +61,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      hideableSidebar: true,
+      autoCollapseSidebarCategories: true,
       navbar: {
         title: 'SRS',
         logo: {
@@ -63,25 +70,25 @@ const config = {
           src: 'img/srs-200x200.png',
         },
         items: [
+          // {
+          //   type: 'doc',
+          //   docId: 'tutorial/getting-started',
+          //   position: 'left',
+          //   label: 'Tutorial',
+          // },
           {
             type: 'doc',
-            docId: 'tutorial/getting-started',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
-            type: 'doc',
-            docId: 'doc/git',
+            docId: 'introduction',
             position: 'left',
             label: 'Docs',
           },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             type: 'doc',
-            docId: 'samples/sample-RTMP',
-            label: 'Samples',
+            docId: 'community/Support',
+            label: 'Community',
             position: 'left',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
             type: 'docsVersionDropdown',
             position: 'right',

@@ -14,9 +14,78 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
-  tutorialSidebar: ['tutorial/getting-started', 'tutorial/learning-path'],
+  /*tutorialSidebar: ['tutorial/getting-started', 'tutorial/learning-path'],
   docsSidebar: ['doc/git', 'doc/build'],
-  sampleSidebar: ['samples/sample-RTMP', 'samples/sample-HLS'],
+  sampleSidebar: ['samples/sample-HLS', 'samples/sample-RTMP'],*/
+
+  docsSidebar: [
+    'introduction',
+    {
+      type: 'category',
+      label: 'Getting Started',
+      link: {
+        type: 'generated-index',
+      },
+      collapsed: false,
+      items: ['gettingStarted/build', 'gettingStarted/sampleRtmp', 'gettingStarted/log', , 'gettingStarted/deploy'],
+    },
+    {
+      type: 'category',
+      label: 'Guides',
+      link: {
+        type: 'generated-index',
+      },
+      collapsed: true,
+      items: ['guides/Forward', 'guides/Ingest', 'guides/Snapshot'],
+    },
+    {
+      type: 'category',
+      label: 'Advanced Guides',
+      link: {
+        type: 'generated-index',
+      },
+      collapsed: true,
+      items: [
+        {
+          type: 'category',
+          label: 'Cluster Guides',
+          link: {
+            type: 'generated-index',
+          },
+          collapsed: true,
+          items: [
+            'advancedGuides/clusterGuides/EdgeClusterFLV',
+            'advancedGuides/clusterGuides/EdgeClusterRTMP',
+            'advancedGuides/clusterGuides/OriginCluster',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Integration Guides',
+          link: {
+            type: 'generated-index',
+          },
+          collapsed: true,
+          items: [
+            'advancedGuides/integrationGuides/HttpApi',
+            'advancedGuides/integrationGuides/HttpCallback',
+            'advancedGuides/integrationGuides/LinuxService',
+            'advancedGuides/integrationGuides/SpecialControl',
+          ],
+        },
+      ],
+    },
+  ],
+  communitySidebar: [
+    'community/Support',
+    'community/Team',
+    'community/AwesomeResources',
+    'community/Contributing',
+    'community/Release',
+    'community/Changelog',
+    'community/Showcase',
+    'community/Chat',
+  ],
 
   // But you can create a sidebar manually
   /*
