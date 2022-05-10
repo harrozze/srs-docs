@@ -3,6 +3,8 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const versions = require('./versions.json');
+const versionsArchived = require('./versionsArchived.json');
 
 const typesenseHttpsHost = process.env.SEARCH_HTTPS_HOST;
 const typesenseHttpsPort = process.env.SEARCH_HTTPS_PORT;
@@ -40,8 +42,12 @@ const config = {
               ? `https://github.com/ossrs/srs-docs/edit/main/${versionDocsDirPath}/${docPath}`
               : `https://github.com/ossrs/srs-docs/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/${version}/${docPath}`;
           },
+          // lastVersion: 'current',
+          lastVersion: versions[0],
           versions: {
-            current: { label: '5.0.0.alpha.1' },
+            current: {
+              label: `4.x.x 🚧`,
+            },
           },
           remarkPlugins: [require('mdx-mermaid')],
         },
@@ -105,25 +111,23 @@ const config = {
             position: 'right',
             dropdownActiveClassDisabled: true,
             dropdownItemsAfter: [
-              {
-                href: 'https://github.com/ossrs/srs/wiki/v4_EN_Home',
-                label: '4.x.x',
-              },
-              {
-                href: 'https://github.com/ossrs/srs/wiki/v3_EN_Home',
-                label: '3.x.x',
-              },
-              {
-                href: 'https://github.com/ossrs/srs/wiki/v2_EN_Home',
-                label: '2.x.x',
-              },
-              {
-                href: 'https://github.com/ossrs/srs/wiki/v1_EN_Home',
-                label: '1.x.x',
-              },
               // {
-              //   to: "/versions",
-              //   label: "All versions",
+              //   type: 'html',
+              //   value: '<hr class="dropdown-separator">',
+              // },
+              // {
+              //   type: 'html',
+              //   className: 'dropdown-archived-versions',
+              //   value: '<b>Archived versions</b>',
+              // },
+              ...versionsArchived.map(({ label, href }) => ({ label: label, href: href })),
+              // {
+              //   type: 'html',
+              //   value: '<hr class="dropdown-separator">',
+              // },
+              // {
+              //   to: '/versions',
+              //   label: 'All versions',
               // },
             ],
           },

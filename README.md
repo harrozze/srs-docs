@@ -199,9 +199,44 @@ Use configs in `'/config/zh-cn.js'`.
   yarn serve
 ```
 
-3. start [scraper](https://github.com/typesense/typesense-docsearch-scraper), which scrapes the site content and indexes the data in the Typesense server: 
+3. start [scraper](https://github.com/typesense/typesense-docsearch-scraper), which scrapes the site content and indexes the data in the Typesense server:
 
 ```
   yarn scraper
 ```
 when scraper finished，you can do search in the html.
+
+
+## Versioning
+
+See [versioning guide here](https://docusaurus.io/docs/versioning).
+
+1. First, make sure the current docs version (the ./i18n/en-us/docusaurus-plugin-content-docs/current directory) is ready to be frozen.
+2. Enter a new version number.
+
+```
+yarn run docusaurus docs:version 4.2.0
+```
+
+3. change the current version label in `docusaurus.config.js` file
+```diff
+        docs: {
+          path: 'i18n/en-us/docusaurus-plugin-content-docs/current',
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          editUrl: ({ versionDocsDirPath, docPath, locale, version }) => {
+            return 'en-us' == locale
+              ? `https://github.com/ossrs/srs-docs/edit/main/${versionDocsDirPath}/${docPath}`
+              : `https://github.com/ossrs/srs-docs/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/${version}/${docPath}`;
+          },
+          // lastVersion: 'current',
+          lastVersion: versions[0],
+          versions: {
+            current: {
++              label: `4.3.0 🚧`,
+-              label: `4.2.0 🚧`,
+            },
+          },
+          remarkPlugins: [require('mdx-mermaid')],
+        },
+```
